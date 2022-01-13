@@ -12,9 +12,10 @@ export const databaseProviders = [
          return {
             ssl: true,
             type: 'mysql' as 'mysql',
-            host: config.get(Configuration.DB_HOST),
-            username: config.get(Configuration.DB_USERNAME),
-            password: config.get(Configuration.DB_PASSWORD),
+            host: config.get(Configuration.HOST),
+            username: config.get(Configuration.USERNAME),
+            password: config.get(Configuration.PASSWORD),
+            port: parseInt(config.get(Configuration.DATABASE_PORT)),
             entities: [__dirname + '/../**/*.entity{.ts,.js}'],
             migrations: [__dirname + '/migrations/*{.ts,.js}']
          } as ConnectionOptions

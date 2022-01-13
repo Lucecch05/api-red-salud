@@ -1,0 +1,8 @@
+Realizar migraciones:
+npm run migration:generate "nombre"
+npm run migration:run
+npm run migration:revert
+
+12/1/2022 (COMANDO NECESARIO PARA HACER LAS MIGRACIONES)
+npm i -g ts-node
+

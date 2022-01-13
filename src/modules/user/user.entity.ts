@@ -19,5 +19,5 @@ export class User extends BaseEntity {
 
    @Column({type: 'text'})
    estado: Estado;
-   
+
 }

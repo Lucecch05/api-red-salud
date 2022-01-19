@@ -3,8 +3,9 @@
 /node_modules
 
 # DATABASE
-.env
+/.env
 /orm.config.json
+/src/database/migrations
 # Logs
 logs
 *.log

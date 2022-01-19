@@ -1,6 +1,6 @@
 import { IsNotEmpty } from "class-validator"
-import { Afiliado } from "src/modules/afiliado/afiliado.entity";
-import { Razon } from "src/modules/razon/razon.entity";
+import { Afiliado } from "../../afiliado/afiliado.entity";
+import { Razon } from "../../razon/razon.entity";
 import { Caja } from "../caja.entity";
 
 enum Accion{

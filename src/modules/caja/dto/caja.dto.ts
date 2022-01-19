@@ -1,5 +1,5 @@
 import { IsNotEmpty } from "class-validator"
-import { User } from "src/modules/user/user.entity";
+import { User } from "../../user/user.entity";
 import { Historial_Caja } from "../historial_caja.entity";
 
 

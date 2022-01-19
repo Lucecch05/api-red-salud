@@ -1,6 +1,6 @@
 import { IsNotEmpty } from "class-validator"
-import { Afiliado } from "src/modules/afiliado/afiliado.entity";
-import { Orden } from "src/modules/orden/orden.entity";
+import { Afiliado } from "../../afiliado/afiliado.entity";
+import { Orden } from "../../orden/orden.entity";
 
 enum Parentesco{
     Hermano = 'hermano/a',

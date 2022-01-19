@@ -1,5 +1,5 @@
 import { IsNotEmpty } from "class-validator"
-import { Localidad } from "src/modules/localidad/localidad.entity";
+import { Localidad } from "../../localidad/localidad.entity";
 
 
 export class BarrioDto {

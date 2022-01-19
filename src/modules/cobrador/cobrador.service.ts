@@ -1,7 +1,5 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { MapperService } from 'src/shared/mapper.service';
-import { CobradorDto } from './dto/cobrador.dto';
 import { Cobrador } from './cobrador.entity';
 import { CobradorRepository } from './cobrador.repository';
 
@@ -10,10 +8,10 @@ export class CobradorService {
     constructor(
         @InjectRepository(CobradorRepository)
         private readonly _cobradorRepository: CobradorRepository,
-        private readonly _mapperService: MapperService,
+        
     ){}
 
-    async get(id: number): Promise<CobradorDto> {
+    async get(id: number): Promise<Cobrador> {
         if(!id){
             throw new BadRequestException('id must be sent');
         }
@@ -24,22 +22,22 @@ export class CobradorService {
             throw new NotFoundException();
         }
 
-        return this._mapperService.map<Cobrador, CobradorDto>(cobrador, new CobradorDto());
+        return cobrador;
 
     }
 
-    async getAll(): Promise<CobradorDto> {
+    async getAll(): Promise<Cobrador[]> {
         
         const cobradores: Cobrador[] = await this._cobradorRepository.find();
 
         
-        return this._mapperService.mapCollection<Cobrador, CobradorDto>(cobradores, new CobradorDto());
+        return cobradores;
 
     }
 
-    async create(cobrador: Cobrador): Promise<CobradorDto>{
+    async create(cobrador: Cobrador): Promise<Cobrador>{
         const savedCobrador: Cobrador = await this._cobradorRepository.save(cobrador);
-        return this._mapperService.map<Cobrador, CobradorDto>(cobrador, new CobradorDto());
+        return savedCobrador;
     }
 
     async update(id: number, cobrador: Cobrador): Promise<void>{

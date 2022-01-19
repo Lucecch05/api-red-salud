@@ -10,14 +10,16 @@ export const databaseProviders = [
       inject: [ConfigService],
       async useFactory(config: ConfigService){
          return {
-            ssl: true,
+            ssl: false,
             type: 'mysql' as 'mysql',
             host: config.get(Configuration.HOST),
             username: config.get(Configuration.USERNAME),
             password: config.get(Configuration.PASSWORD),
             port: parseInt(config.get(Configuration.DATABASE_PORT)),
             entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-            migrations: [__dirname + '/migrations/*{.ts,.js}']
+            migrations: [__dirname + '/migrations/*{.ts,.js}'],
+            synchronize: true,
+            database: config.get(Configuration.DATABASE)
          } as ConnectionOptions
       }
    })

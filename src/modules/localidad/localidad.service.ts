@@ -1,7 +1,5 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { MapperService } from 'src/shared/mapper.service';
-import { LocalidadDto } from './dto/localidad.dto';
 import { Localidad } from './localidad.entity';
 import { LocalidadRepository } from './localidad.repository';
 
@@ -10,10 +8,10 @@ export class LocalidadService {
     constructor(
         @InjectRepository(LocalidadRepository)
         private readonly _localidadRepository: LocalidadRepository,
-        private readonly _mapperService: MapperService,
+        
     ){}
 
-    async get(id: number): Promise<LocalidadDto> {
+    async get(id: number): Promise<Localidad> {
         if(!id){
             throw new BadRequestException('id must be sent');
         }
@@ -24,22 +22,22 @@ export class LocalidadService {
             throw new NotFoundException();
         }
 
-        return this._mapperService.map<Localidad, LocalidadDto>(localidad, new LocalidadDto());
+        return localidad;
 
     }
 
-    async getAll(): Promise<LocalidadDto> {
+    async getAll(): Promise<Localidad[]> {
         
         const localidades: Localidad[] = await this._localidadRepository.find();
 
         
-        return this._mapperService.mapCollection<Localidad, LocalidadDto>(localidades, new LocalidadDto());
+        return localidades;
 
     }
 
-    async create(localidad: Localidad): Promise<LocalidadDto>{
+    async create(localidad: Localidad): Promise<Localidad>{
         const savedLocalidad: Localidad = await this._localidadRepository.save(localidad);
-        return this._mapperService.map<Localidad, LocalidadDto>(localidad, new LocalidadDto());
+        return savedLocalidad;
     }
 
     async update(id: number, localidad: Localidad): Promise<void>{

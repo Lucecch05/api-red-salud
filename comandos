@@ -6,3 +6,6 @@ npm run migration:revert
 12/1/2022 (COMANDO NECESARIO PARA HACER LAS MIGRACIONES)
 npm i -g ts-node
 
+INSTALACION DE NEST
+npm i -g @nestjs/cli
+

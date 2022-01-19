@@ -1,5 +1,5 @@
 import { IsNotEmpty } from "class-validator"
-import { Prestador } from "src/modules/prestador/prestador.entity";
+import { Prestador } from "../../prestador/prestador.entity";
 
 
 export class PrestacionDto {

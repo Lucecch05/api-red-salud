@@ -22,9 +22,10 @@ import { PrestadorModule } from './modules/prestador/prestador.module';
 import { PrestacionModule } from './modules/prestacion/prestacion.module';
 import { EspecialidadModule } from './modules/especialidad/especialidad.module';
 import { OrdenModule } from './modules/orden/orden.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
-  imports: [ConfigModule, DatabaseModule, UserModule, RoleModule, AfiliadoModule, PersonaModule, BarrioModule, LocalidadModule, DescuentoModule, CobradorModule, VendedorModule, PlanModule, CajaModule, RazonModule, ReciboModule, PrestadorModule, PrestacionModule, EspecialidadModule, OrdenModule],
+  imports: [ConfigModule, DatabaseModule, UserModule, RoleModule, AfiliadoModule, PersonaModule, BarrioModule, LocalidadModule, DescuentoModule, CobradorModule, VendedorModule, PlanModule, CajaModule, RazonModule, ReciboModule, PrestadorModule, PrestacionModule, EspecialidadModule, OrdenModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })

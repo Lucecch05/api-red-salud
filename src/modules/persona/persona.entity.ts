@@ -30,8 +30,8 @@ export class Persona extends BaseEntity{
     @Column({type: 'text', nullable: false})
     apellido: string;
 
-    @Column({type: 'timestamp', nullable: false})
-    fecha_creacion: Date;
+    @Column({type: 'text', nullable: false})
+    fecha_creacion: string;
 
     @Column({type: 'integer', nullable: false})
     dni: number;

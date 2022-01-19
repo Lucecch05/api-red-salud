@@ -1,7 +1,5 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { MapperService } from 'src/shared/mapper.service';
-import { RolDto } from './dto/role.dto';
 import { Rol } from './role.entity';
 import { RolRepository } from './role.repository';
 
@@ -10,10 +8,10 @@ export class RolService {
     constructor(
         @InjectRepository(RolRepository)
         private readonly _rolRepository: RolRepository,
-        private readonly _mapperService: MapperService,
+        
     ){}
 
-    async get(id: number): Promise<RolDto> {
+    async get(id: number): Promise<Rol> {
         if(!id){
             throw new BadRequestException('id must be sent');
         }
@@ -24,22 +22,22 @@ export class RolService {
             throw new NotFoundException();
         }
 
-        return this._mapperService.map<Rol, RolDto>(rol, new RolDto());
+        return rol;
 
     }
 
-    async getAll(): Promise<RolDto> {
+    async getAll(): Promise<Rol[]> {
         
         const roles: Rol[] = await this._rolRepository.find();
 
         
-        return this._mapperService.mapCollection<Rol, RolDto>(roles, new RolDto());
+        return roles;
 
     }
 
-    async create(rol: Rol): Promise<RolDto>{
+    async create(rol: Rol): Promise<Rol>{
         const savedRol: Rol = await this._rolRepository.save(rol);
-        return this._mapperService.map<Rol, RolDto>(rol, new RolDto());
+        return savedRol;
     }
 
     async update(id: number, rol: Rol): Promise<void>{

@@ -1,6 +1,6 @@
 import { IsNotEmpty } from "class-validator"
-import { Persona } from "src/modules/persona/persona.entity";
-import { Prestador } from "src/modules/prestador/prestador.entity";
+import { Persona } from "../../persona/persona.entity";
+import { Prestador } from "../../prestador/prestador.entity";
 
 enum Tipo{
     Autorizacion = 'autorizacion',

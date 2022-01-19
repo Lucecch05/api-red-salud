@@ -1,6 +1,6 @@
 import { IsNotEmpty } from "class-validator"
-import { Especialidad } from "src/modules/especialidad/especialidad.entity";
-import { Prestacion } from "src/modules/prestacion/prestacion.entity";
+import { Especialidad } from "../../especialidad/especialidad.entity";
+import { Prestacion } from "../../prestacion/prestacion.entity";
 
 enum Formato{
     Abona_Prestador = 'abona en prestador',

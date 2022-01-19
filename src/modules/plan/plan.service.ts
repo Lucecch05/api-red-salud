@@ -1,7 +1,5 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { MapperService } from 'src/shared/mapper.service';
-import { PlanDto } from './dto/plan.dto';
 import { Plan } from './plan.entity';
 import { PlanRepository } from './plan.repository';
 
@@ -10,10 +8,10 @@ export class PlanService {
     constructor(
         @InjectRepository(PlanRepository)
         private readonly _planRepository: PlanRepository,
-        private readonly _mapperService: MapperService,
+        
     ){}
 
-    async get(id: number): Promise<PlanDto> {
+    async get(id: number): Promise<Plan> {
         if(!id){
             throw new BadRequestException('id must be sent');
         }
@@ -24,22 +22,22 @@ export class PlanService {
             throw new NotFoundException();
         }
 
-        return this._mapperService.map<Plan, PlanDto>(plan, new PlanDto());
+        return plan;
 
     }
 
-    async getAll(): Promise<PlanDto> {
+    async getAll(): Promise<Plan[]> {
         
         const planes: Plan[] = await this._planRepository.find();
 
         
-        return this._mapperService.mapCollection<Plan, PlanDto>(planes, new PlanDto());
+        return planes;
 
     }
 
-    async create(plan: Plan): Promise<PlanDto>{
+    async create(plan: Plan): Promise<Plan>{
         const savedPlan: Plan = await this._planRepository.save(plan);
-        return this._mapperService.map<Plan, PlanDto>(plan, new PlanDto());
+        return savedPlan;
     }
 
     async update(id: number, plan: Plan): Promise<void>{

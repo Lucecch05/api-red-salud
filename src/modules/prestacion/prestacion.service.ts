@@ -1,7 +1,5 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { MapperService } from 'src/shared/mapper.service';
-import { PrestacionDto } from './dto/prestacion.dto';
 import { Prestacion } from './prestacion.entity';
 import { PrestacionRepository } from './prestacion.repository';
 
@@ -10,10 +8,10 @@ export class PrestacionService {
     constructor(
         @InjectRepository(PrestacionRepository)
         private readonly _prestacionRepository: PrestacionRepository,
-        private readonly _mapperService: MapperService,
+        
     ){}
 
-    async get(id: number): Promise<PrestacionDto> {
+    async get(id: number): Promise<Prestacion> {
         if(!id){
             throw new BadRequestException('id must be sent');
         }
@@ -24,22 +22,22 @@ export class PrestacionService {
             throw new NotFoundException();
         }
 
-        return this._mapperService.map<Prestacion, PrestacionDto>(prestacion, new PrestacionDto());
+        return prestacion;
 
     }
 
-    async getAll(): Promise<PrestacionDto> {
+    async getAll(): Promise<Prestacion[]> {
         
         const prestaciones: Prestacion[] = await this._prestacionRepository.find();
 
         
-        return this._mapperService.mapCollection<Prestacion, PrestacionDto>(prestaciones, new PrestacionDto());
+        return prestaciones;
 
     }
 
-    async create(prestacion: Prestacion): Promise<PrestacionDto>{
+    async create(prestacion: Prestacion): Promise<Prestacion>{
         const savedPrestacion: Prestacion = await this._prestacionRepository.save(prestacion);
-        return this._mapperService.map<Prestacion, PrestacionDto>(prestacion, new PrestacionDto());
+        return savedPrestacion;
     }
 
     async update(id: number, prestacion: Prestacion): Promise<void>{

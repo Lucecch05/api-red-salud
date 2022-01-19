@@ -34,17 +34,17 @@ export class Afiliado extends BaseEntity{
     @JoinColumn()
     plan: Plan;
 
-    @OneToMany(() => Persona, (personas: Persona) => personas.afiliado)
+    @OneToMany(() => Persona, (personas: Persona) => personas.afiliado,{eager: true})
     personas: Persona[];
 
     @OneToMany(() => Recibo, (recibos: Recibo) => recibos.afiliado)
     recibos: Recibo[];
 
-    @Column({type: 'timestamp', nullable: false})
-    fecha_creacion: Date;
+    @Column({type: 'text', nullable: false})
+    fecha_creacion: string;
 
-    @Column({type: 'timestamp', nullable: false})
-    fecha_venta: Date;
+    @Column({type: 'text', nullable: false})
+    fecha_venta: string;
 
     @Column({type: 'integer', nullable: false})
     fecha_cobro: number;

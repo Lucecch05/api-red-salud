@@ -1,6 +1,6 @@
 import { IsNotEmpty } from "class-validator"
-import { Afiliado } from "src/modules/afiliado/afiliado.entity";
-import { Historial_Caja } from "src/modules/caja/historial_caja.entity";
+import { Afiliado } from "../../afiliado/afiliado.entity";
+import { Historial_Caja } from "../../caja/historial_caja.entity";
 
 
 export class ReciboDto {

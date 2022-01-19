@@ -1,7 +1,5 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { MapperService } from 'src/shared/mapper.service';
-import { RazonDto } from './dto/razon.dto';
 import { Razon } from './razon.entity';
 import { RazonRepository } from './razon.repository';
 
@@ -10,10 +8,10 @@ export class RazonService {
     constructor(
         @InjectRepository(RazonRepository)
         private readonly _razonRepository: RazonRepository,
-        private readonly _mapperService: MapperService,
+        
     ){}
 
-    async get(id: number): Promise<RazonDto> {
+    async get(id: number): Promise<Razon> {
         if(!id){
             throw new BadRequestException('id must be sent');
         }
@@ -24,22 +22,22 @@ export class RazonService {
             throw new NotFoundException();
         }
 
-        return this._mapperService.map<Razon, RazonDto>(razon, new RazonDto());
+        return razon;
 
     }
 
-    async getAll(): Promise<RazonDto> {
+    async getAll(): Promise<Razon[]> {
         
         const razones: Razon[] = await this._razonRepository.find();
 
         
-        return this._mapperService.mapCollection<Razon, RazonDto>(razones, new RazonDto());
+        return razones;
 
     }
 
-    async create(razon: Razon): Promise<RazonDto>{
+    async create(razon: Razon): Promise<Razon>{
         const savedRazon: Razon = await this._razonRepository.save(razon);
-        return this._mapperService.map<Razon, RazonDto>(razon, new RazonDto());
+        return savedRazon;
     }
 
     async update(id: number, razon: Razon): Promise<void>{

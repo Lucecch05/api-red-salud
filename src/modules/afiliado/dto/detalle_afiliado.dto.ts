@@ -1,5 +1,5 @@
 import { IsNotEmpty } from "class-validator"
-import { Barrio } from "src/modules/barrio/barrio.entity";
+import { Barrio } from "../../barrio/barrio.entity";
 import { Afiliado } from "../afiliado.entity";
 
 

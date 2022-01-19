@@ -1,7 +1,5 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { MapperService } from 'src/shared/mapper.service';
-import { AfiliadoDto } from './dto/afiliado.dto';
 import { Afiliado } from './afiliado.entity';
 import { AfiliadoRepository } from './afiliado.repository';
 
@@ -10,10 +8,10 @@ export class AfiliadoService {
     constructor(
         @InjectRepository(AfiliadoRepository)
         private readonly _afiliadoRepository: AfiliadoRepository,
-        private readonly _mapperService: MapperService,
+        
     ){}
 
-    async get(id: number): Promise<AfiliadoDto> {
+    async get(id: number): Promise<Afiliado> {
         if(!id){
             throw new BadRequestException('id must be sent');
         }
@@ -24,22 +22,22 @@ export class AfiliadoService {
             throw new NotFoundException();
         }
 
-        return this._mapperService.map<Afiliado, AfiliadoDto>(afiliado, new AfiliadoDto());
+        return afiliado;
 
     }
 
-    async getAll(): Promise<AfiliadoDto> {
+    async getAll(): Promise<Afiliado[]> {
         
         const afiliados: Afiliado[] = await this._afiliadoRepository.find();
 
         
-        return this._mapperService.mapCollection<Afiliado, AfiliadoDto>(afiliados, new AfiliadoDto());
+        return afiliados;
 
     }
 
-    async create(afiliado: Afiliado): Promise<AfiliadoDto>{
+    async create(afiliado: Afiliado): Promise<Afiliado>{
         const savedAfiliado: Afiliado = await this._afiliadoRepository.save(afiliado);
-        return this._mapperService.map<Afiliado, AfiliadoDto>(afiliado, new AfiliadoDto());
+        return savedAfiliado;
     }
 
     async update(id: number, afiliado: Afiliado): Promise<void>{

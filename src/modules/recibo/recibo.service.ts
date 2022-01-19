@@ -1,7 +1,5 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { MapperService } from 'src/shared/mapper.service';
-import { ReciboDto } from './dto/recibo.dto';
 import { Recibo } from './recibo.entity';
 import { ReciboRepository } from './recibo.repository';
 
@@ -10,10 +8,10 @@ export class ReciboService {
     constructor(
         @InjectRepository(ReciboRepository)
         private readonly _reciboRepository: ReciboRepository,
-        private readonly _mapperService: MapperService,
+        
     ){}
 
-    async get(id: number): Promise<ReciboDto> {
+    async get(id: number): Promise<Recibo> {
         if(!id){
             throw new BadRequestException('id must be sent');
         }
@@ -24,22 +22,22 @@ export class ReciboService {
             throw new NotFoundException();
         }
 
-        return this._mapperService.map<Recibo, ReciboDto>(recibo, new ReciboDto());
+        return recibo;
 
     }
 
-    async getAll(): Promise<ReciboDto> {
+    async getAll(): Promise<Recibo[]> {
         
         const recibos: Recibo[] = await this._reciboRepository.find();
 
         
-        return this._mapperService.mapCollection<Recibo, ReciboDto>(recibos, new ReciboDto());
+        return recibos;
 
     }
 
-    async create(recibo: Recibo): Promise<ReciboDto>{
+    async create(recibo: Recibo): Promise<Recibo>{
         const savedRecibo: Recibo = await this._reciboRepository.save(recibo);
-        return this._mapperService.map<Recibo, ReciboDto>(recibo, new ReciboDto());
+        return savedRecibo;
     }
 
     async update(id: number, recibo: Recibo): Promise<void>{

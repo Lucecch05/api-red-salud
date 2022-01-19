@@ -1,10 +1,10 @@
 import { IsNotEmpty } from "class-validator"
-import { Cobrador } from "src/modules/cobrador/cobrador.entity";
-import { Descuento } from "src/modules/descuento/descuento.entity";
-import { Persona } from "src/modules/persona/persona.entity";
-import { Plan } from "src/modules/plan/plan.entity";
-import { Recibo } from "src/modules/recibo/recibo.entity";
-import { Vendedor } from "src/modules/vendedor/vendedor.entity";
+import { Cobrador } from "../../cobrador/cobrador.entity";
+import { Descuento } from "../../descuento/descuento.entity";
+import { Persona } from "../../persona/persona.entity";
+import { Plan } from "../../plan/plan.entity";
+import { Recibo } from "../../recibo/recibo.entity";
+import { Vendedor } from "../../vendedor/vendedor.entity";
 import { Detalle_Afiliado } from "../detalle_afilliado.entity";
 
 

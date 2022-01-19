@@ -1,4 +1,5 @@
 import { IsNotEmpty } from "class-validator"
+import { User } from "../../user/user.entity";
 
 
 export class RolDto {
@@ -7,5 +8,8 @@ export class RolDto {
 
     @IsNotEmpty()
     descripcion: string;
+
+    @IsNotEmpty()
+    user: User;
 
 }

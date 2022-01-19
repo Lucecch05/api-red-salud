@@ -1,4 +1,4 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm'
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm'
 import { Rol } from '../role/role.entity';
 
 @Entity('users')
@@ -7,14 +7,13 @@ export class User extends BaseEntity {
    @PrimaryGeneratedColumn('increment')
    id: number;
 
-   @OneToOne(type=>Rol, {cascade: true, nullable: false, eager: true})
-   @JoinColumn()
+   @ManyToOne(() => Rol, (rol: Rol) => rol.users,{eager: true})
    rol: Rol;
 
-   @Column({type: 'varchar',unique: true, length: 25, nullable: false, name: 'usuario'})
+   @Column({type: 'text', nullable: false})
    username: string;
 
-   @Column({ type: 'varchar', length: 25, nullable: false })
+   @Column({ type: 'text', nullable: false })
    password: string;
 
 

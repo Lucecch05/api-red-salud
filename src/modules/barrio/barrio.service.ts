@@ -1,7 +1,5 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { MapperService } from 'src/shared/mapper.service';
-import { BarrioDto } from './dto/barrio.dto';
 import { Barrio } from './barrio.entity';
 import { BarrioRepository } from './barrio.repository';
 
@@ -10,10 +8,10 @@ export class BarrioService {
     constructor(
         @InjectRepository(BarrioRepository)
         private readonly _barrioRepository: BarrioRepository,
-        private readonly _mapperService: MapperService,
+        
     ){}
 
-    async get(id: number): Promise<BarrioDto> {
+    async get(id: number): Promise<Barrio> {
         if(!id){
             throw new BadRequestException('id must be sent');
         }
@@ -24,22 +22,22 @@ export class BarrioService {
             throw new NotFoundException();
         }
 
-        return this._mapperService.map<Barrio, BarrioDto>(barrio, new BarrioDto());
+        return barrio;
 
     }
 
-    async getAll(): Promise<BarrioDto> {
+    async getAll(): Promise<Barrio[]> {
         
         const barrios: Barrio[] = await this._barrioRepository.find();
 
         
-        return this._mapperService.mapCollection<Barrio, BarrioDto>(barrios, new BarrioDto());
+        return barrios;
 
     }
 
-    async create(barrio: Barrio): Promise<BarrioDto>{
+    async create(barrio: Barrio): Promise<Barrio>{
         const savedBarrio: Barrio = await this._barrioRepository.save(barrio);
-        return this._mapperService.map<Barrio, BarrioDto>(barrio, new BarrioDto());
+        return savedBarrio;
     }
 
     async update(id: number, barrio: Barrio): Promise<void>{

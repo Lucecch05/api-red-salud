@@ -18,8 +18,9 @@ export class UserController {
           
         }
 
-        @UseGuards(AuthGuard())   //Para que solo puedan usarlos los usuarios registrados
         @Get()
+        @Roles('ADMIN')
+        @UseGuards(AuthGuard(), RoleGuard)  //Para que solo puedan usarlos los usuarios registrados
         async getUsers(): Promise<User[]>{
             const users: User[] = await this._userService.getAll();
             return users;

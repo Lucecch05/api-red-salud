@@ -17,12 +17,12 @@ export class Orden extends BaseEntity{
     @JoinColumn()
     prestador: Prestador;
 
-    @ManyToOne(() => Persona, (persona: Persona) => persona.ordenes)
+    @ManyToOne(() => Persona, (persona: Persona) => persona.ordenes,{eager: true})
     persona: Persona;
 
     @Column({type: 'text', nullable: false})
     tipo: Tipo;
 
-    @Column({type: 'datetime', nullable: false})
-    fecha_creacion: Date;
+    @Column({type: 'text', nullable: false})
+    fecha_creacion: string;
 }

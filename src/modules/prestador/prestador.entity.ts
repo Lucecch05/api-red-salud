@@ -17,7 +17,7 @@ export class Prestador extends BaseEntity{
     @JoinColumn()
     especialidad: Especialidad;
 
-    @ManyToMany(() => Prestacion, prestacion => prestacion.prestadores)
+    @ManyToMany(() => Prestacion, prestacion => prestacion.prestadores,{eager:true})
     @JoinTable({name: 'prestador_prestacion'})
     prestaciones: Prestacion[];
 

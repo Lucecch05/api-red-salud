@@ -12,8 +12,8 @@ export class Descuento extends BaseEntity{
     @Column({type: 'integer', nullable: true})
     porcentaje: number;
 
-    @Column({type:'timestamp', nullable: false})
-    caducidad: Date;
+    @Column({type:'text', nullable: false})
+    caducidad: string;
 
     @Column({type:'text', nullable: false})
     observacion: string;

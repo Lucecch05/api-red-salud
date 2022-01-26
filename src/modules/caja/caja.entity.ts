@@ -12,7 +12,7 @@ export class Caja extends BaseEntity{
     @JoinColumn()
     usuario: User;
 
-    @OneToMany(() => Historial_Caja, (historiales_caja: Historial_Caja) => historiales_caja.caja)
+    @OneToMany(() => Historial_Caja, (historiales_caja: Historial_Caja) => historiales_caja.caja, {eager: true})
     historiales_caja: Historial_Caja[];
 
     @Column({type: 'float', nullable: false})

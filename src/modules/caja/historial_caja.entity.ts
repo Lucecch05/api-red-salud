@@ -33,6 +33,6 @@ export class Historial_Caja extends BaseEntity{
     @Column({type: 'float', nullable: false})
     importe: number;
 
-    @Column({type: 'timestamp', nullable: false})
-    fecha: Date;
+    @Column({type: 'text', nullable: false})
+    fecha: string;
 }

@@ -17,7 +17,7 @@ export class Orden extends BaseEntity{
     @JoinColumn()
     prestador: Prestador;
 
-    @ManyToOne(() => Persona, (persona: Persona) => persona.ordenes,{eager: true})
+    @ManyToOne(() => Persona, (persona: Persona) => persona.ordenes)
     persona: Persona;
 
     @Column({type: 'text', nullable: false})

@@ -37,7 +37,7 @@ export class Afiliado extends BaseEntity{
     @OneToMany(() => Persona, (personas: Persona) => personas.afiliado,{eager: true})
     personas: Persona[];
 
-    @OneToMany(() => Recibo, (recibos: Recibo) => recibos.afiliado)
+    @OneToMany(() => Recibo, (recibos: Recibo) => recibos.afiliado,{eager: true})
     recibos: Recibo[];
 
     @Column({type: 'text', nullable: false})

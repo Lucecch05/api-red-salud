@@ -7,7 +7,7 @@ export class Barrio extends BaseEntity{
     @PrimaryGeneratedColumn('increment')
     id_barrio: number;
 
-    @ManyToOne(() => Localidad, (localidad: Localidad) => localidad.barrios)
+    @ManyToOne(() => Localidad, (localidad: Localidad) => localidad.barrios,{eager: true})
     localidad: Localidad;
 
     @Column({type:'text', nullable: false})

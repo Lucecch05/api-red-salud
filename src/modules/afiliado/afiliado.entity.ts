@@ -55,5 +55,6 @@ export class Afiliado extends BaseEntity{
     @Column({type: 'tinyint', default: 1})
     estado: number;
 
-
+    @Column({type:'integer', nullable: false})
+    telefono: number;
 }

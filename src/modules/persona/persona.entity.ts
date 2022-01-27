@@ -32,6 +32,9 @@ export class Persona extends BaseEntity{
 
     @Column({type: 'text', nullable: false})
     fecha_creacion: string;
+    
+    @Column({type: 'text', nullable: false})
+    fecha_nacimiento: string;
 
     @Column({type: 'integer', nullable: false})
     dni: number;

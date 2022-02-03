@@ -1,10 +1,14 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Afiliado } from "../afiliado/afiliado.entity";
 
 @Entity('planes')
 export class Plan extends BaseEntity{
 
     @PrimaryGeneratedColumn('increment')
     id_plan: number;
+
+    @OneToMany(() => Afiliado, (afiliados: Afiliado) => afiliados.plan ,{eager: true})
+    afiliados: Afiliado[];
 
     @Column({type: 'text', nullable: false})
     descripcion: string;

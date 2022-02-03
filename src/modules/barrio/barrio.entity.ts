@@ -13,4 +13,7 @@ export class Barrio extends BaseEntity{
     @Column({type:'text', nullable: false})
     descripcion: string;
 
+    @Column({type:'integer', nullable: true})
+    zona: number;
+
 }

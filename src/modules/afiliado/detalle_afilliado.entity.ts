@@ -20,7 +20,5 @@ export class Detalle_Afiliado extends BaseEntity{
 
     @Column({type: 'text', nullable: true})
     observacion: string;
-
-    @OneToOne(() => Afiliado, (afiliado: Afiliado) => afiliado.detalle)
-    afiliado: Afiliado;
+    
 }

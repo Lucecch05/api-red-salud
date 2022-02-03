@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, JoinColumn, JoinTable, ManyToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Especialidad } from "../especialidad/especialidad.entity";
 import { Prestacion } from "../prestacion/prestacion.entity";
 
@@ -13,8 +13,7 @@ export class Prestador extends BaseEntity{
     @PrimaryGeneratedColumn('increment')
     id_prestador: number;
 
-    @OneToOne(type=>Especialidad, {cascade: true, nullable: false, eager: true})
-    @JoinColumn()
+    @ManyToOne(() => Especialidad, (especialidad: Especialidad) => especialidad.prestadores)
     especialidad: Especialidad;
 
     @ManyToMany(() => Prestacion, prestacion => prestacion.prestadores,{eager:true})

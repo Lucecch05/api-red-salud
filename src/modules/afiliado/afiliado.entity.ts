@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, OneToOne, OneToMany, JoinColumn } from "typeorm";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, OneToOne, OneToMany, JoinColumn, ManyToOne } from "typeorm";
 import { Cobrador } from "../cobrador/cobrador.entity";
 import { Descuento } from "../descuento/descuento.entity";
 import { Persona } from "../persona/persona.entity";
@@ -22,16 +22,13 @@ export class Afiliado extends BaseEntity{
     @JoinColumn()
     descuento: Descuento;
 
-    @OneToOne(type=>Cobrador, {cascade: true, nullable: false, eager: true})
-    @JoinColumn()
+    @ManyToOne(() => Cobrador, (cobrador: Cobrador) => cobrador.afiliados)
     cobrador: Cobrador;
 
-    @OneToOne(type=>Vendedor, {cascade: true, nullable: false, eager: true})
-    @JoinColumn()
+    @ManyToOne(() => Vendedor, (vendedor: Vendedor) => vendedor.afiliados)
     vendedor: Vendedor;
 
-    @OneToOne(type=>Plan, {cascade: true, nullable: false, eager: true})
-    @JoinColumn()
+    @ManyToOne(() => Plan, (plan: Plan) => plan.afiliados)
     plan: Plan;
 
     @OneToMany(() => Persona, (personas: Persona) => personas.afiliado,{eager: true})

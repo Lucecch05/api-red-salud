@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Barrio } from "../barrio/barrio.entity";
 import { Afiliado } from "./afiliado.entity";
 
@@ -8,8 +8,7 @@ export class Detalle_Afiliado extends BaseEntity{
     @PrimaryGeneratedColumn('increment')
     id_detalle: number;
 
-    @OneToOne(() => Barrio, {cascade: true, nullable: false, eager: true})
-    @JoinColumn()
+    @ManyToOne(() => Barrio, (barrio: Barrio) => barrio.detalles,{eager: true})
     barrio: Barrio;
 
     @Column({type: 'text', nullable: false})

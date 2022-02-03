@@ -13,8 +13,7 @@ export class Orden extends BaseEntity{
     @PrimaryGeneratedColumn('increment')
     id_orden: number;
 
-    @OneToOne(type=>Prestador, {cascade: true, nullable: false, eager: true})
-    @JoinColumn()
+    @ManyToOne(() => Prestador, (prestador: Prestador) => prestador.ordenes)
     prestador: Prestador;
 
     @ManyToOne(() => Persona, (persona: Persona) => persona.ordenes)

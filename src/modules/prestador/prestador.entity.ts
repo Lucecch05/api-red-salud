@@ -1,5 +1,6 @@
-import { BaseEntity, Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Especialidad } from "../especialidad/especialidad.entity";
+import { Orden } from "../orden/orden.entity";
 import { Prestacion } from "../prestacion/prestacion.entity";
 
 enum Formato{
@@ -19,6 +20,9 @@ export class Prestador extends BaseEntity{
     @ManyToMany(() => Prestacion, prestacion => prestacion.prestadores,{eager:true})
     @JoinTable({name: 'prestador_prestacion'})
     prestaciones: Prestacion[];
+
+    @OneToMany(() => Orden, (ordenes: Orden) => ordenes.prestador,{eager: true})
+    ordenes: Orden[];
 
     @Column({type:'text', nullable: false})
     proveedor: string;

@@ -14,11 +14,11 @@ export class Afiliado extends BaseEntity{
     @PrimaryGeneratedColumn('increment')
     id_afiliado: number;
 
-    @OneToOne(type=>Detalle_Afiliado, {cascade: true, nullable: false, eager: true})
-    @JoinColumn()
+    @OneToOne(()=>Detalle_Afiliado, {cascade: true, nullable: false, eager: true})
+    @JoinColumn({name: 'id_detalle'})
     detalle: Detalle_Afiliado;
 
-    @OneToOne(type=>Descuento, {cascade: true, nullable: true})
+    @OneToOne(()=>Descuento, {cascade: true, nullable: true})
     @JoinColumn()
     descuento: Descuento;
 

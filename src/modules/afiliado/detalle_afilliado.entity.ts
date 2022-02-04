@@ -8,7 +8,7 @@ export class Detalle_Afiliado extends BaseEntity{
     @PrimaryGeneratedColumn('increment')
     id_detalle: number;
 
-    @ManyToOne(() => Barrio, (barrio: Barrio) => barrio.detalles,{eager: true})
+    @ManyToOne(() => Barrio, (barrio: Barrio) => barrio.detalles,{})
     barrio: Barrio;
 
     @Column({type: 'text', nullable: false})

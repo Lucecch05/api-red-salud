@@ -55,4 +55,13 @@ export class AfiliadoService {
         await this._afiliadoRepository.update(id, { estado: 0});
     }
 
+
+    //CUSTOMS SERVICES
+
+    async getAllAfiliados(){
+        const afiliados = await this._afiliadoRepository.query("")     
+
+        return afiliados;
+    }
+
 }

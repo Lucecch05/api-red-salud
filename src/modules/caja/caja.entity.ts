@@ -8,11 +8,11 @@ export class Caja extends BaseEntity{
     @PrimaryGeneratedColumn('increment')
     id_caja: number;
 
-    @OneToOne(type=>User, {cascade: true, nullable: false, eager: true})
+    @OneToOne(type=>User, {cascade: true, nullable: false, })
     @JoinColumn()
     usuario: User;
 
-    @OneToMany(() => Historial_Caja, (historiales_caja: Historial_Caja) => historiales_caja.caja, {eager: true})
+    @OneToMany(() => Historial_Caja, (historiales_caja: Historial_Caja) => historiales_caja.caja, {})
     historiales_caja: Historial_Caja[];
 
     @Column({type: 'float', nullable: false})

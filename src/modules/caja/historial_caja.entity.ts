@@ -16,11 +16,11 @@ export class Historial_Caja extends BaseEntity{
     @PrimaryGeneratedColumn('increment')
     id_historial_caja: number;
     
-    @OneToOne(type=>Afiliado, {cascade: true, nullable: false, eager: true})
+    @OneToOne(type=>Afiliado, {cascade: true, nullable: false, })
     @JoinColumn()
     afiliado: Afiliado;
 
-    @OneToOne(type=>Razon, {cascade: true, nullable: false, eager: true})
+    @OneToOne(type=>Razon, {cascade: true, nullable: false, })
     @JoinColumn()
     razon: Razon;
 

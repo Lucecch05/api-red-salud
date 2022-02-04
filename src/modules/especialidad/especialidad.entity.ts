@@ -7,7 +7,7 @@ export class Especialidad extends BaseEntity{
     @PrimaryGeneratedColumn('increment')
     id_especialidad: number;
     
-    @OneToMany(() => Prestador, (prestadores: Prestador) => prestadores.especialidad ,{eager: true})
+    @OneToMany(() => Prestador, (prestadores: Prestador) => prestadores.especialidad ,{})
     prestadores: Prestador[];
 
     @Column({type: 'text', nullable: false})

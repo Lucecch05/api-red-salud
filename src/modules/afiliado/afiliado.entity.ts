@@ -31,10 +31,10 @@ export class Afiliado extends BaseEntity{
     @ManyToOne(() => Plan, (plan: Plan) => plan.afiliados)
     plan: Plan;
 
-    @OneToMany(() => Persona, (personas: Persona) => personas.afiliado,{eager: true})
+    @OneToMany(() => Persona, (personas: Persona) => personas.afiliado, {cascade: true, eager: true})
     personas: Persona[];
 
-    @OneToMany(() => Recibo, (recibos: Recibo) => recibos.afiliado,{eager: true})
+    @OneToMany(() => Recibo, (recibos: Recibo) => recibos.afiliado)
     recibos: Recibo[];
 
     @Column({type: 'text', nullable: false})

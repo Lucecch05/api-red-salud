@@ -6,12 +6,21 @@ import { AfiliadoService } from './afiliado.service';
 export class AfiliadoController {
     constructor(private readonly _afiliadoService: AfiliadoService){}
 
-        @Get(':id')
+        //CUSTOMS
+        @Get('/all')
+        async getAllAfiliado() {
+            const afiliados = await this._afiliadoService.getAllAfiliados();
+            return afiliados;
+        }
+
+        @Get('/:id')
         async getAfiliado(@Param('id',ParseIntPipe) id: number): Promise<Afiliado>{
             const afiliado = await this._afiliadoService.get(id);
             return afiliado;
           
         }
+
+      
 
         @Get()
         async getAfiliados(): Promise<Afiliado[]>{
@@ -37,5 +46,9 @@ export class AfiliadoController {
             await this._afiliadoService.delete(id);
             return true;
         }
+
+
+   
+
 
 }

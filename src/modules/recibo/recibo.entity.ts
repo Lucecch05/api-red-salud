@@ -8,7 +8,7 @@ export class Recibo extends BaseEntity{
     @PrimaryGeneratedColumn('increment')
     id_recibo: number;
 
-    @OneToOne(type=>Historial_Caja, {cascade: true, nullable: true, eager: true})
+    @OneToOne(type=>Historial_Caja, {cascade: true, nullable: true, })
     @JoinColumn()
     historial_caja: Historial_Caja;
 

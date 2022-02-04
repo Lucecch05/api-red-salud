@@ -7,7 +7,7 @@ export class Plan extends BaseEntity{
     @PrimaryGeneratedColumn('increment')
     id_plan: number;
 
-    @OneToMany(() => Afiliado, (afiliados: Afiliado) => afiliados.plan ,{eager: true})
+    @OneToMany(() => Afiliado, (afiliados: Afiliado) => afiliados.plan ,{})
     afiliados: Afiliado[];
 
     @Column({type: 'text', nullable: false})

@@ -7,7 +7,7 @@ export class Vendedor extends BaseEntity{
     @PrimaryGeneratedColumn('increment')
     id_vendedor: number;
 
-    @OneToMany(() => Afiliado, (afiliados: Afiliado) => afiliados.vendedor ,{eager: true})
+    @OneToMany(() => Afiliado, (afiliados: Afiliado) => afiliados.vendedor ,{})
     afiliados: Afiliado[];
 
     @Column({type: 'varchar', length: 15, nullable: false})

@@ -18,7 +18,7 @@ export class Persona extends BaseEntity{
     @ManyToOne(() => Afiliado, (afiliado: Afiliado) => afiliado.personas)
     afiliado: Afiliado
 
-    @OneToMany(() => Orden, (ordenes: Orden) => ordenes.persona, {nullable: true, eager: true})
+    @OneToMany(() => Orden, (ordenes: Orden) => ordenes.persona, {nullable: true, })
     ordenes: Orden[];
 
     @Column({type: 'integer', nullable: false})

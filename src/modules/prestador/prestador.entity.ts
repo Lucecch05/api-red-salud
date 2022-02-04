@@ -21,7 +21,7 @@ export class Prestador extends BaseEntity{
     @JoinTable({name: 'prestador_prestacion'})
     prestaciones: Prestacion[];
 
-    @OneToMany(() => Orden, (ordenes: Orden) => ordenes.prestador,{eager: true})
+    @OneToMany(() => Orden, (ordenes: Orden) => ordenes.prestador)
     ordenes: Orden[];
 
     @Column({type:'text', nullable: false})

@@ -22,6 +22,6 @@ export class Orden extends BaseEntity{
     @Column({type: 'text', nullable: false})
     tipo: Tipo;
 
-    @Column({type: 'text', nullable: false})
-    fecha_creacion: string;
+    @Column({type: 'timestamp', nullable: false, default: () => 'CURRENT_TIMESTAMP'})
+    fecha_creacion: Date;
 }

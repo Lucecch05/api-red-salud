@@ -37,8 +37,8 @@ export class Afiliado extends BaseEntity{
     @OneToMany(() => Recibo, (recibos: Recibo) => recibos.afiliado)
     recibos: Recibo[];
 
-    @Column({type: 'text', nullable: false})
-    fecha_creacion: string;
+    @Column({type: 'timestamp', nullable: false, default: () => 'CURRENT_TIMESTAMP'})
+    fecha_creacion: Date;
 
     @Column({type: 'text', nullable: false})
     fecha_venta: string;

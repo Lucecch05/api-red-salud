@@ -15,8 +15,8 @@ export class Recibo extends BaseEntity{
     @ManyToOne(() => Afiliado, (afiliado: Afiliado) => afiliado.recibos)
     afiliado: Afiliado
 
-    @Column({type: 'text', nullable: false})
-    fecha_creacion: string;
+    @Column({type: 'timestamp', nullable: false, default: () => 'CURRENT_TIMESTAMP'})
+    fecha_creacion: Date;
 
     @Column({type: 'text', nullable: false})
     fecha_cobro: string;

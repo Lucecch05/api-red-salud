@@ -18,17 +18,17 @@ export class Afiliado extends BaseEntity{
     @JoinColumn({name: 'id_detalle'})
     detalle: Detalle_Afiliado;
 
-    @OneToOne(()=>Descuento, {cascade: true, nullable: true})
+    @OneToOne(()=>Descuento, {cascade: true, nullable: true, eager: true})
     @JoinColumn()
     descuento: Descuento;
 
-    @ManyToOne(() => Cobrador, (cobrador: Cobrador) => cobrador.afiliados)
+    @ManyToOne(() => Cobrador, (cobrador: Cobrador) => cobrador.afiliados, {eager: true})
     cobrador: Cobrador;
 
-    @ManyToOne(() => Vendedor, (vendedor: Vendedor) => vendedor.afiliados)
+    @ManyToOne(() => Vendedor, (vendedor: Vendedor) => vendedor.afiliados, {eager: true})
     vendedor: Vendedor;
 
-    @ManyToOne(() => Plan, (plan: Plan) => plan.afiliados)
+    @ManyToOne(() => Plan, (plan: Plan) => plan.afiliados, {eager: true})
     plan: Plan;
 
     @OneToMany(() => Persona, (personas: Persona) => personas.afiliado, {cascade: true, eager: true})
@@ -40,8 +40,8 @@ export class Afiliado extends BaseEntity{
     @Column({type: 'timestamp', nullable: false, default: () => 'CURRENT_TIMESTAMP'})
     fecha_creacion: Date;
 
-    @Column({type: 'text', nullable: false})
-    fecha_venta: string;
+    @Column({ type: 'timestamp', nullable: false, default: () => 'CURRENT_TIMESTAMP'})
+    fecha_venta: Date;
 
     @Column({type: 'integer', nullable: false})
     fecha_cobro: number;
@@ -52,6 +52,6 @@ export class Afiliado extends BaseEntity{
     @Column({type: 'tinyint', default: 1})
     estado: number;
 
-    @Column({type:'integer', nullable: false})
-    telefono: number;
+    @Column({ type:'text', nullable: false})
+    telefono: string;
 }

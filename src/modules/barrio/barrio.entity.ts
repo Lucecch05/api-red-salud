@@ -11,7 +11,7 @@ export class Barrio extends BaseEntity{
     @OneToMany(() => Detalle_Afiliado, (detalles: Detalle_Afiliado) => detalles.barrio)
     detalles: Detalle_Afiliado[];
 
-    @ManyToOne(() => Localidad, (localidad: Localidad) => localidad.barrios,{})
+    @ManyToOne(() => Localidad, (localidad: Localidad) => localidad.barrios,{eager: true})
     localidad: Localidad;
 
     @Column({type:'text', nullable: false})

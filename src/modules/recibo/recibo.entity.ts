@@ -12,14 +12,14 @@ export class Recibo extends BaseEntity{
     @JoinColumn()
     historial_caja: Historial_Caja;
 
-    @ManyToOne(() => Afiliado, (afiliado: Afiliado) => afiliado.recibos)
+    @ManyToOne(() => Afiliado, (afiliado: Afiliado) => afiliado.recibos,{eager: true})
     afiliado: Afiliado
 
     @Column({type: 'timestamp', nullable: false, default: () => 'CURRENT_TIMESTAMP'})
     fecha_creacion: Date;
 
-    @Column({type: 'text', nullable: false})
-    fecha_cobro: string;
+    @Column({ type: 'timestamp', nullable: true})
+    fecha_cobro: Date;
 
     @Column({type: 'text', nullable: false})
     mes_recibo: string

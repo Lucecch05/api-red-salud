@@ -55,4 +55,16 @@ export class PlanService {
         await this._planRepository.delete(id);
     }
 
+    //CUSTOMS
+
+    async countAfiliadosByPlan() {
+        const planesCount = await this._planRepository.query(`select p.id_plan as id_plan, p.descripcion as descripcion, count(*) as cantidad 
+                                                            from planes as p
+                                                            left join afiliados as a on a.planIdPlan = p.id_plan 
+                                                            where a.id_afiliado is not null group by p.id_plan;`);
+                                                            
+
+        return planesCount;
+    }
+
 }

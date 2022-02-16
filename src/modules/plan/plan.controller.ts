@@ -6,11 +6,16 @@ import { PlanService } from './plan.service';
 export class PlanController {
     constructor(private readonly _planService: PlanService){}
 
+    @Get('/plan_count')
+    async getPlansAfiliados(){
+        const planes = await this._planService.countAfiliadosByPlan();
+        return planes;
+    }
+
     @Get(':id')
     async getPlan(@Param('id',ParseIntPipe) id: number): Promise<Plan>{
         const plan = await this._planService.get(id);
         return plan;
-      
     }
 
     @Get()

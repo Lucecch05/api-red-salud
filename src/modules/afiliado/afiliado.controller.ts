@@ -17,10 +17,7 @@ export class AfiliadoController {
         async getAfiliado(@Param('id',ParseIntPipe) id: number): Promise<Afiliado>{
             const afiliado = await this._afiliadoService.get(id);
             return afiliado;
-          
         }
-
-      
 
         @Get()
         async getAfiliados(): Promise<Afiliado[]>{

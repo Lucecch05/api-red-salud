@@ -6,11 +6,16 @@ import { ReciboService } from './recibo.service';
 export class ReciboController {
     constructor(private readonly _reciboService: ReciboService){}
 
+    @Get('afiliado/:id')
+    async getAllByAfiliado(@Param('id', ParseIntPipe) id: number): Promise<Recibo> {
+        const recibo = await this._reciboService.getAllByAfiliado(id);
+        return recibo;
+    }
+
     @Get(':id')
     async getRecibo(@Param('id',ParseIntPipe) id: number): Promise<Recibo>{
         const recibo = await this._reciboService.get(id);
         return recibo;
-      
     }
 
     @Get()

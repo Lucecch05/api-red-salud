@@ -55,4 +55,16 @@ export class ReciboService {
         await this._reciboRepository.delete(id);
     }
 
+
+    //CUSTOMS SERVICES
+
+    async getAllByAfiliado(id_afiliado: number) {
+        const afiliados = await this._reciboRepository.query(`SELECT r.* from recibos as r
+                            left join afiliados as a on a.id_afiliado = r.afiliadoIdAfiliado
+                            where a.id_afiliado = ${id_afiliado};`)
+
+
+        return afiliados;
+    }
+
 }

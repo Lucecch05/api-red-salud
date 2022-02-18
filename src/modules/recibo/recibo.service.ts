@@ -1,5 +1,6 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Afiliado } from '../afiliado/afiliado.entity';
 import { Recibo } from './recibo.entity';
 import { ReciboRepository } from './recibo.repository';
 
@@ -66,5 +67,20 @@ export class ReciboService {
 
         return afiliados;
     }
+
+    // async createMultipleRecibos(afiliados: Afiliado[], mes: string, anio: string){
+    //     var recibos: Array<{id_recibo: number, id_afiliado: number}> = [];
+    //     afiliados.forEach(afiliado => {
+    //         const id_recibo = this._reciboRepository.createQueryBuilder()
+    //                                                         .insert().into("recibos").values({
+    //                                                             afiliadoIdAfiliado: afiliado.id_afiliado,
+    //                                                             mes_recibo: mes,
+    //                                                             anio_recibo: anio
+    //                                                         }).returning("id_recibo").execute();
+            
+    //         recibos.push({id_recibo: id_recibo.raw.id_recibo, id_afiliado: afiliado.id_afiliado});
+    //     });
+
+    // }
 
 }

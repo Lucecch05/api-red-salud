@@ -23,9 +23,30 @@ import { PrestacionModule } from './modules/prestacion/prestacion.module';
 import { EspecialidadModule } from './modules/especialidad/especialidad.module';
 import { OrdenModule } from './modules/orden/orden.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { DetalleAfiliadoModule } from './modules/afiliado/detalle_afiliado.module';
 
 @Module({
-  imports: [ConfigModule, DatabaseModule, UserModule, RoleModule, AfiliadoModule, PersonaModule, BarrioModule, LocalidadModule, DescuentoModule, CobradorModule, VendedorModule, PlanModule, CajaModule, RazonModule, ReciboModule, PrestadorModule, PrestacionModule, EspecialidadModule, OrdenModule, AuthModule],
+  imports: [ConfigModule, 
+            DatabaseModule,
+            UserModule,
+            RoleModule, 
+            AfiliadoModule, 
+            PersonaModule, 
+            BarrioModule, 
+            LocalidadModule, 
+            DescuentoModule, 
+            CobradorModule, 
+            VendedorModule, 
+            PlanModule, 
+            CajaModule, 
+            RazonModule, 
+            ReciboModule, 
+            PrestadorModule, 
+            PrestacionModule,
+            EspecialidadModule, 
+            OrdenModule, 
+            AuthModule,
+            DetalleAfiliadoModule],
   controllers: [AppController],
   providers: [AppService],
 })

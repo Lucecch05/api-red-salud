@@ -24,9 +24,12 @@ import { EspecialidadModule } from './modules/especialidad/especialidad.module';
 import { OrdenModule } from './modules/orden/orden.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { DetalleAfiliadoModule } from './modules/afiliado/detalle_afiliado.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import OrmConfig from './orm.config';
 
 @Module({
-  imports: [ConfigModule, 
+  imports: [ConfigModule,
+            TypeOrmModule.forRoot(OrmConfig), 
             DatabaseModule,
             UserModule,
             RoleModule, 

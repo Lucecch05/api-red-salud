@@ -23,7 +23,7 @@ export class ConfigService {
       }
       else{
          this.envConfig = {
-            PORT: process.env.PORT,
+            PORT: '3306',
             HOST: '34.176.218.118',
             USERNAME: 'root',
             PASSWORD: 'infinitytech',

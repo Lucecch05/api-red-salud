@@ -58,4 +58,5 @@ export class AppModule {
     AppModule.port = this._configService.get(Configuration.SERVER_PORT);
   }
 
+  
 }

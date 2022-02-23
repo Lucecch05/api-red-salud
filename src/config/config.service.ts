@@ -24,7 +24,7 @@ export class ConfigService {
       else{
          this.envConfig = {
             PORT: '3306',
-            HOST: '/cloudsql/avid-theme-337913:southamerica-west1:red-salud',
+            HOST: '34.176.218.118',
             USERNAME: 'root',
             PASSWORD: 'infinitytech',
             DATABASE: 'red_salud'

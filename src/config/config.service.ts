@@ -23,8 +23,8 @@ export class ConfigService {
       }
       else{
          this.envConfig = {
-            PORT: process.env.PORT,
-            HOST: '34.176.218.118',
+            PORT: '3306',
+            HOST: '/cloudsql/woven-rush-336717:southamerica-west1:red-salud',
             USERNAME: 'root',
             PASSWORD: 'infinitytech',
             DATABASE: 'red_salud'

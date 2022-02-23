@@ -6,4 +6,4 @@ export enum Configuration {
    DATABASE = "DATABASE",
    DATABASE_PORT = "DATABASE_PORT",
    JWT_SECRET = 'JWT_SECRET',
-}
+} 

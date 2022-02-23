@@ -22,5 +22,5 @@ export const databaseProviders = [
             migrations: [__dirname + '/migrations/*{.ts,.js}'],
          } as ConnectionOptions
       }
-   })
+   }) 
 ]

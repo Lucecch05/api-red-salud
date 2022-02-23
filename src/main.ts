@@ -8,4 +8,6 @@ async function bootstrap() {
   await app.listen(process.env.SERVER_PORT || 5000);
   console.log("SERVER ON - PORT: ", AppModule.port);
 }
+
+
 bootstrap();

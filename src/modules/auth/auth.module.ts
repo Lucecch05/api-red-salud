@@ -21,7 +21,7 @@ import { Configuration } from '../../config/config.keys';
       inject: [ConfigService],
       useFactory(config: ConfigService){
         return {
-          secret: config.get(Configuration.JWT_SECRET),
+          secret: 'fas%&fsfs13123dfsdfsd+*#$dfs123123',
           signOptions: {
             expiresIn: 3600,
           }
